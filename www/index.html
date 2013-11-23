@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="
+			user-scalable=no, 
+			initial-scale=1, 
+			maximum-scale=1, 
+			minimum-scale=1, 
+			width=device-width, 
+			height=device-height, 
+			target-densitydpi=device-dpi" />
+        <title>Connection Type</title>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="phonegap.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			document.addEventListener("deviceready", onDeviceReady, false);
+			function onDeviceReady() {
+			};
+			function checkConnection() {
+				var networkState = navigator.connection.type;
+
+				var states = {};
+				states[Connection.UNKNOWN]  = 'unknown未知的連線網路';
+				states[Connection.ETHERNET] = 'ethernet網路連線';
+				states[Connection.WIFI]     = 'wifi連線';
+				states[Connection.CELL_2G]  = '2G連線';
+				states[Connection.CELL_3G]  = '3G連線';
+				states[Connection.CELL_4G]  = '4G連線';
+				states[Connection.CELL]     = 'universal網路連線';
+				states[Connection.NONE]     = 'none尚未連線網路';
+				$("#NetworkStatus").html('連線類型ConnType is: ' + states[networkState]);
+			};
+		</script>
+		<style>
+			body {
+				font-size:26px;
+			}
+			button {
+				padding: 20px;
+				font-size:26px;
+			}
+		</style>
+    </head>
+    <body>
+		<button type="button" onclick="checkConnection();">取得網路狀態GetConnStus:)</button>
+		<div id="NetworkStatus"></div>
+    </body>
+</html>
